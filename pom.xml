@@ -48,12 +48,12 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- My SQL Database
+		<!-- My SQL Database -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
-		</dependency>-->
+		</dependency>
 		<!-- H2 Inmemoruy Database-->
 		<dependency>
 			<groupId>com.h2database</groupId>
