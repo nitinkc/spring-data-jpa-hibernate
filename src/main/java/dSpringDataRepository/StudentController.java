@@ -1,3 +1,4 @@
+/*
 package dSpringDataRepository;
 
 import java.net.URI;
@@ -18,23 +19,27 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-public class StudentControllerJPAResource {
+public class StudentController {
 
 	@Autowired
-	private StudentRepository studentRepository;
+	private StudentDAOService studentDAOService;
+
+	public StudentController(StudentDAOService studentDAOService) {
+		this.studentDAOService = studentDAOService;
+	}
 
 	// Retrieve all users
 	@GetMapping(path = "jpa/students")
 	public List<Student> retrieveAllUsers() {
 		System.out.println("Testing");
 
-		return studentRepository.findAll();
+		return studentDAOService.findAll();
 	}
 
 	// Retrieve specific users
 	@GetMapping(path = "jpa/student/{id}")
 	public Resource<Student> retrieveUserById(@PathVariable int id) {
-		Optional<Student> std = studentRepository.findById(id);
+		Optional<Student> std = studentDAOService.findById(id);
 
 		if (!std.isPresent())
 			try {
@@ -50,13 +55,13 @@ public class StudentControllerJPAResource {
 	
 	@DeleteMapping("/jpa/student/{id}")
 	public void deleteStudent(@PathVariable int id) {
-		studentRepository.deleteById(id);
+		studentDAOService.deleteById(id);
 		
 	}
 	
 	@PostMapping("/jpa/student")
 	public ResponseEntity<Object> createStudent(@Valid @RequestBody Student student){
-		Student savedStud = studentRepository.save(student);
+		Student savedStud = studentDAOService.save(student);
 		
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
@@ -70,7 +75,7 @@ public class StudentControllerJPAResource {
 	// Retrieve all the posts of a user
 	@GetMapping(path = "jpa/student/{id}/posts")
 	public List<Post> retrievePostById(@PathVariable int id) {
-		Optional<Student> std = studentRepository.findById(id);
+		Optional<Student> std = studentDAOService.findById(id);
 
 		if (!std.isPresent())
 			try {
@@ -82,3 +87,4 @@ public class StudentControllerJPAResource {
 		return std.get().getPosts();
 	}
 }
+*/

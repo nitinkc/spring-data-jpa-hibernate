@@ -19,7 +19,6 @@ public class Employee {
 	}
 
 	public Employee(String name, String role) {
-		super();
 		this.name = name;
 		this.role = role;
 	}

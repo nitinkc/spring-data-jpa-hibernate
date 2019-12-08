@@ -5,9 +5,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
-@Controller
-@Component
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
 public class StudentDAOService {
 
 	private static List<Student> student = new ArrayList<>();
@@ -16,7 +19,7 @@ public class StudentDAOService {
 	public List<Student> findAll() {
 		return getStudent();
 	}
-	
+
 	// Retrieve users by Id
 	public Student findById(int id) {
 		if(getStudent().get(id) == null) {
