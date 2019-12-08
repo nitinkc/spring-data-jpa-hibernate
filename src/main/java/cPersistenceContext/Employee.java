@@ -5,24 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//Employee Table
-
 @Entity
 public class Employee {
-	
+
 	//Defining Primary key which is generated
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	
-	
 	private String name;
 	private String role;
-	
-	
+
 	public Employee() {
-		
 	}
+
 	public Employee(String name, String role) {
 		super();
 		this.name = name;
@@ -46,7 +41,7 @@ public class Employee {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", role=" + role + "]";

@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.learningRestServices.bHardCodedData.UserDAOService;
+import com.learningJPA.bHardCodedData.UserDAOService;
 
 @RestController
 public class EmployeeController {
 
-	private static final Logger log = 
-			LoggerFactory.getLogger(UserDAOService.class);
+	private static final Logger log = LoggerFactory.getLogger(UserDAOService.class);
 		
 	@Autowired
 	private EmployeeDAOService employeeDAOService;

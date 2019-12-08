@@ -2,7 +2,6 @@
 
 use Docker to run the DB
 
-
 docker pull mysql
 
 docker run -d
@@ -18,3 +17,12 @@ docker exec -it mysql_learning mysql -uroot -p
 ## Brew Mysql
 mysql.server start
 # spring-data-jpa
+
+Add different packages via Component Scan
+```java
+@ComponentScan(basePackages = {"cPersistenceContext", "com.learningJPA"})
+```
+
+## Spring Data JPA
+Removes the need of using Entity Manager in persistence context. Spring Data JPA can talk to the Entity Manager and provides 
+the required method implementation

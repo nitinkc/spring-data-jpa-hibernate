@@ -1,4 +1,4 @@
-package com.learningRestServices.bHardCodedData;
+package com.learningJPA.bHardCodedData;
 
 import java.util.Date;
 
