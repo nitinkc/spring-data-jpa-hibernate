@@ -1,10 +1,15 @@
 package com.learningJPA.dSpringDataRepository;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/jpa")
@@ -47,14 +52,12 @@ public class StudentController {
 		}
 
 		return optional.get();
-
 	}
 
-	/*
-	@PostMapping("/jpa/student")
+	@PostMapping("/student")
 	public ResponseEntity<Object> createStudent(@Valid @RequestBody Student student){
 		Student savedStud = studentRepository.save(student);
-		
+		System.err.println("POST");
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
@@ -62,7 +65,7 @@ public class StudentController {
 				.toUri();
 		
 		return (ResponseEntity<Object>) ResponseEntity.created(location);
-	}*/
+	}
 
 	// Retrieve all the posts of a user
 	/*@GetMapping(path = "jpa/student/{id}/posts")

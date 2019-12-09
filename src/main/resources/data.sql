@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS student;
+/*DROP TABLE IF EXISTS student;
 create table student
 (
     id integer not null,
@@ -11,4 +11,4 @@ insert into student
 values(10001,'Stud1', sysdate());
 
 insert into student
-values(10002,'Ravi', sysdate());
+values(10002,'Ravi', sysdate());*/
