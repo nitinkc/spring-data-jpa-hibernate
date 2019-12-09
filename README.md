@@ -30,30 +30,4 @@ the required method implementation
 ## Initial Data Setup
 placing the data into data.sql file in Resources folder
 
-## Using CrudRepositiry
-```java
-@Repository
-public interface StudentRepository extends JpaRepository<Student, Long> {
-}
-```
-
-### Using this Repo (Service) in the Controller Class
-
-```java
-@RestController
-public class StudentController {
-
-    @Autowired
-    private StudentRepository userRepository;
-
-    @GetMapping("/jpa/users")
-    public List<Student> retrieveAllUsers(){
-        return userRepository.findAll();
-    }
-}
-```
-
-Verify the data connectivity from GET Request
-
-http://localhost:8080/jpa/users
 

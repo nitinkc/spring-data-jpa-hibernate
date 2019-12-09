@@ -1,8 +1,9 @@
-package com.learningJPA.dSpringDataRepository;
+package com.learningJPA.cPersistenceContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.learningJPA.dSpringDataRepository.Student;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,6 +32,4 @@ public class StudentDAOService{
 	public static void setStudent(List<Student> student) {
 		StudentDAOService.student = student;
 	}
-
-
 }
