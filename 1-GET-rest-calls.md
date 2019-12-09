@@ -51,3 +51,13 @@ public Student retrieveUserById(@PathVariable("id") @NotBlank Long id) {
 
 http://localhost:8089/api/hardCodedData/user/1
 
+Another Approach
+
+```java
+// Retrieve specific users
+@GetMapping(path = "/student/{id}")
+public Student retrieveUserById(@PathVariable("id") @NotBlank Long id) {
+    return studentRepository.findById(id)
+            .orElseThrow(() -> new StudentNotFoundException("id:" + id));
+}
+```
