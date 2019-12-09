@@ -4,10 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/jpa")
@@ -40,13 +37,20 @@ public class StudentController {
 		Student foundStudent = optional.get();
 		return foundStudent;
 	}
-	/*
-	@DeleteMapping("/jpa/student/{id}")
-	public void deleteStudent(@PathVariable Long id) {
-        studentRepository.deleteById(id);
-		
+
+	@DeleteMapping("/student/{id}")
+	public Student deleteStudent(@PathVariable Long id) {
+		Optional<Student> optional = studentRepository.findById(id);
+
+		if(optional.isPresent()){
+			studentRepository.deleteById(id);
+		}
+
+		return optional.get();
+
 	}
-	
+
+	/*
 	@PostMapping("/jpa/student")
 	public ResponseEntity<Object> createStudent(@Valid @RequestBody Student student){
 		Student savedStud = studentRepository.save(student);
