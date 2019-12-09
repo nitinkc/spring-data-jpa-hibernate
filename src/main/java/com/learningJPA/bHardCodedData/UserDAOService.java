@@ -6,11 +6,9 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
-@Controller
-@Component
+@Service
 public class UserDAOService {
 	@Getter
 	@Setter

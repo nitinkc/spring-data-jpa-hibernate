@@ -1,13 +1,12 @@
-package cPersistenceContext;
+package com.learningJPA.cPersistenceContext;
 
+import com.learningJPA.bHardCodedData.UserDAOService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.learningJPA.bHardCodedData.UserDAOService;
 
 @RestController
 public class EmployeeController {

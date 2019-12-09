@@ -1,5 +1,4 @@
-package cPersistenceContext;
-
+package com.learningJPA.cPersistenceContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -8,13 +7,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public class UserDaoService {
+public class EmployeeDAOService {
 
 	@PersistenceContext
-	private EntityManager entityManager;
-	
-	public long insert(User user) {
-		entityManager.persist(user);
-		return user.getId();
+	public EntityManager entityManager;
+
+	public long insert(Employee emp) {
+		entityManager.persist(emp);
+		return emp.getId();	
 	}
 }

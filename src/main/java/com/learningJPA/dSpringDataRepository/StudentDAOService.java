@@ -1,17 +1,12 @@
-package dSpringDataRepository;
+package com.learningJPA.dSpringDataRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
 @Service
-@Transactional
-public class StudentDAOService {
+public class StudentDAOService{
 
 	private static List<Student> student = new ArrayList<>();
 

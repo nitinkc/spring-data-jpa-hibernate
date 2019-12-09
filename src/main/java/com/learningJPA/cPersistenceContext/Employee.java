@@ -1,4 +1,4 @@
-package cPersistenceContext;
+package com.learningJPA.cPersistenceContext;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
