@@ -30,4 +30,14 @@ the required method implementation
 ## Initial Data Setup
 placing the data into data.sql file in Resources folder
 
+#### Swagger UI login
+
+[http://localhost:8080/swagger-ui.html]
+
+#### H2 DB login
+
+[http://localhost:8080/h2-console/]
+
+spring.datasource.url = jdbc:h2:file:C:/data/spring-data-jpa
+
 
