@@ -27,7 +27,7 @@ public class Student {
 	private String name;
 	@Past(message = "DOB Cannot be in the Future")
 	private Date dob;
-	
+
 //	@OneToMany(mappedBy="student")
 //	private List<Post> posts;
 
