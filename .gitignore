@@ -1,6 +1,16 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### DB Files
+*.mv.db
+*.db
+
 ### STS ###
 .apt_generated
 .classpath
@@ -10,16 +20,3 @@
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
