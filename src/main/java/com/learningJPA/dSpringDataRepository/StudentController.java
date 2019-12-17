@@ -34,8 +34,7 @@ public class StudentController {
 	// Retrieve specific users
 	@GetMapping(path = "/student/{id}")
 	public Student retrieveUserById(@PathVariable("id") @NotBlank Long id) {
-		return studentRepository.findById(id)
-				.orElseThrow(() -> new StudentNotFoundException("id:" + id));
+		return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("id:" + id));
 
 		/*
 			Optional<Student> optional = studentRepository.findById(id);
