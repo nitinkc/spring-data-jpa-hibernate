@@ -20,7 +20,6 @@
 .springBeans
 .sts4-cache
 
-<<<<<<< HEAD
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -35,7 +34,3 @@
 /nbdist/
 /.nb-gradle/
 *.db
-*.db
-*.db
-=======
->>>>>>> ffa955b1c48f60f458d5a636984ab8358e869c83
