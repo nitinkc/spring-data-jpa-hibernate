@@ -47,7 +47,7 @@ public class StudentService {
     }
 
 
-    public Student retrieveUserById(@PathVariable("id") @NotBlank Long id) {
+    public Student retrieveStudentById(@PathVariable("id") @NotBlank Long id) {
         return studentRepository.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException("id:" + id));
 
@@ -61,6 +61,12 @@ public class StudentService {
 			return foundStudent;
 		*/
     }
+
+    public List<Student> retrieveStudentByCityOfBirth(@PathVariable("city") String city) {
+        return studentRepository.findByCityOfBirth(city)
+                .orElseThrow(() -> new StudentNotFoundException("city:" + city));
+    }
+
 
     public Student deleteStudent(@PathVariable Long id) {
         Optional<Student> optional = studentRepository.findById(id);
