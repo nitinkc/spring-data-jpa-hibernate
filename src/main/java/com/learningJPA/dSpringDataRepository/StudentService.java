@@ -1,6 +1,10 @@
 package com.learningJPA.dSpringDataRepository;
 
 import com.learningJPA.dSpringDataRepository.studentException.StudentNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +33,19 @@ public class StudentService {
     public List<Student> retrieveAllUsers() {
         return studentRepository.findAll();
     }
+
+    public List<Student> retrieveAllUsersPagination(Integer pageNo, Integer pageSize, String sortBy) {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+
+        Page<Student> pagedResult = studentRepository.findAll(paging);
+
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<Student>();
+        }
+    }
+
 
     public Student retrieveUserById(@PathVariable("id") @NotBlank Long id) {
         return studentRepository.findById(id)
@@ -70,7 +88,7 @@ public class StudentService {
     public Student modifyValue(@RequestBody Student newStudent, @PathVariable Long id){
         return studentRepository.findById(id)
                 .map(student -> {
-                    student.setName(newStudent.getName());
+                    student.setFirstName(newStudent.getFirstName());
                     student.setDob(newStudent.getDob());
                     return studentRepository.save(student);
                 })

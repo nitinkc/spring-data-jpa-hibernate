@@ -23,8 +23,19 @@ public class StudentController {
 	// Retrieve all users
 	@GetMapping(path = "/students")
 	public List<Student> retrieveAllUsers() {
-		System.err.println("###################################### Retrieving All Users ######################################");
+		System.err.println("######################### Retrieving All Users ##########################################");
 		return studentService.retrieveAllUsers();
+	}
+
+	// Retrieve all users page by page
+	@GetMapping(path = "/students/pagination")
+	public List<Student> retrieveAllUsersPagination(@RequestParam(defaultValue = "0") Integer pageNo,
+													@RequestParam(defaultValue = "10") Integer pageSize,
+													@RequestParam(defaultValue = "id") String sortBy) {
+		System.err.println("############################# Retrieving All Users Pagination ###########################");
+		System.err.println("Page No : "+pageNo + "---"+ "Page Size: "+ pageSize + "---" + "sort by "+ sortBy);
+
+		return studentService.retrieveAllUsersPagination(pageNo,pageSize,sortBy);
 	}
 
 	// Retrieve specific users
