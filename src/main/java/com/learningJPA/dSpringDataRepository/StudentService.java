@@ -7,12 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +43,7 @@ public class StudentService {
     }
 
 
-    public Student retrieveStudentById(@PathVariable("id") @NotBlank Long id) {
+    public Student retrieveStudentById(Long id) {
         return studentRepository.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException("id:" + id));
 
@@ -62,17 +58,23 @@ public class StudentService {
 		*/
     }
 
-    public List<Student> retrieveStudentByCityOfBirth(@PathVariable("city") String city) {
+    public List<Student> retrieveStudentByCityOfBirth(String city) {
         return studentRepository.findByCityOfBirth(city)
                 .orElseThrow(() -> new StudentNotFoundException("city:" + city));
     }
 
-    public List<Student> retrieveStudentByYearOfBirth(@PathVariable("year") int year) {
+    public List<Student> retrieveStudentByYearOfBirth(int year) {
         return studentRepository.findByYearOfBirth(year)
                 .orElseThrow(() -> new StudentNotFoundException("year:" + year));
     }
 
-    public Student deleteStudent(@PathVariable Long id) {
+    public List<Student> findByGenderAndAndCityOfBirth(String gender, String city) {
+        return studentRepository.findByGenderAndAndCityOfBirth(gender,city)
+                .orElseThrow(() -> new StudentNotFoundException("gender:" + gender));
+    }
+
+
+    public Student deleteStudent(Long id) {
         Optional<Student> optional = studentRepository.findById(id);
 
         if(optional.isPresent()){
@@ -82,7 +84,7 @@ public class StudentService {
         return optional.get();
     }
 
-    public ResponseEntity<Object> createStudent(@Valid @RequestBody Student student){
+    public ResponseEntity<Object> createStudent(Student student){
         System.err.println("###################################### POST Begins ######################################");
         Student savedStud = studentRepository.save(student);
         System.err.println("###################################### POST Ends ######################################");
@@ -95,7 +97,7 @@ public class StudentService {
         return (ResponseEntity<Object>) ResponseEntity.created(location).build();
     }
 
-    public Student modifyValue(@RequestBody Student newStudent, @PathVariable Long id){
+    public Student modifyValue(Student newStudent, Long id){
         return studentRepository.findById(id)
                 .map(student -> {
                     student.setFirstName(newStudent.getFirstName());

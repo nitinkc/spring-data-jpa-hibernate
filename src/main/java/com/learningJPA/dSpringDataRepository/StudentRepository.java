@@ -16,4 +16,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     //Works with H2 Database
     @Query(value = "SELECT a.*  FROM STUDENT a where EXTRACT(YEAR FROM a.dob) = ?1",nativeQuery = true)
     Optional<List<Student>> findByYearOfBirth(int year);
+
+    Optional<List<Student>> findByGenderAndAndCityOfBirth(String gender, String city);
+
 }
