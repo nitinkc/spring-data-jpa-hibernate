@@ -48,7 +48,17 @@ public class StudentController {
 	// Retrieve students by City
 	@GetMapping(path = "/students/from/{city}")
 	public List<Student> retrieveStudentByCity(@PathVariable("city") String city) {
+		log.trace("Entered City is: " + city);
 		return studentService.retrieveStudentByCityOfBirth(city);
+	}
+
+	// Retrieve students by Year
+	@GetMapping(path = "/students/dob/{year}")
+	public List<Student> retrieveStudentByYear(@PathVariable("year") int year) {
+		log.trace("Entered year is: " + year);
+		List<Student> returnedStudents = studentService.retrieveStudentByYearOfBirth(year);
+		log.trace("Students Returned: " + returnedStudents.size());
+		return returnedStudents;
 	}
 
 	@DeleteMapping("/student/{id}")

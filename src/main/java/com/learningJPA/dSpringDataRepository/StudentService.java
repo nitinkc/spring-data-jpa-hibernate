@@ -67,6 +67,10 @@ public class StudentService {
                 .orElseThrow(() -> new StudentNotFoundException("city:" + city));
     }
 
+    public List<Student> retrieveStudentByYearOfBirth(@PathVariable("year") int year) {
+        return studentRepository.findByYearOfBirth(year)
+                .orElseThrow(() -> new StudentNotFoundException("year:" + year));
+    }
 
     public Student deleteStudent(@PathVariable Long id) {
         Optional<Student> optional = studentRepository.findById(id);
