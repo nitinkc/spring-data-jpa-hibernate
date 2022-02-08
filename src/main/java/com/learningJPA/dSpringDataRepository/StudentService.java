@@ -69,7 +69,7 @@ public class StudentService {
     }
 
     public List<Student> findByGenderAndAndCityOfBirth(String gender, String city) {
-        return studentRepository.findByGenderAndAndCityOfBirth(gender,city)
+        return studentRepository.findByGenderAndCityOfBirth(gender,city)
                 .orElseThrow(() -> new StudentNotFoundException("gender:" + gender));
     }
 

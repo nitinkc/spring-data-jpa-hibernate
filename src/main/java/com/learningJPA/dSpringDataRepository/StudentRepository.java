@@ -18,5 +18,4 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     Optional<List<Student>> findByYearOfBirth(int year);
 
     Optional<List<Student>> findByGenderAndCityOfBirth(String gender, String city);
-
 }
