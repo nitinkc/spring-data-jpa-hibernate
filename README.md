@@ -1,4 +1,4 @@
-# Spring 5 Learning
+# Spring Data Jpa Experiments
 
 use Docker to run the DB
 
