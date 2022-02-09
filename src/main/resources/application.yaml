@@ -3,54 +3,12 @@ server:
   port: 8080
 
 spring:
-  profiles:
-    active: dev
-
----
-# CALLING H2 DB FROM EXTERNAL PROPERTIES FILE
-## ONLY application-datasource-h2.properties FILE NAME IS WORKING
-spring:
-  config:
-    activate:
-      on-profile: "dev"
-    include: "datasource-h2,hibernate,logging"
----
-spring:
-  config:
-    activate:
-      on-profile: "logging"
-  main:
-    banner-mode: console
-
-#logging.level.org.hibernate.stat=debug
-#logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
-#logging.level.org.hibernate.SQL=debug
-
-logging:
-  level:
-    org:
-      springframework: DEBUG
-    hibernate:
-      type: trace
-    root: WARN
-    com:
-      learningJPA:
-        dSpringDataRepository: TRACE
-  pattern:
-    console: "%clr(%d{dd-mon-yyyy E HH:mm:ss.SSS}){red} %clr(%-5p) %clr(%logger{0}){blue} %clr(%m){faint}%n"
-
----
-spring:
-  config:
-    activate:
-      on-profile: "datasource-h2"
   h2:
     console:
       enabled: true
-  # temporary data storage for Windows File system
   datasource:
     #url: "jdbc:h2:file:C:/data/spring-data-jpa"
-    url: jdbc:h2:mem:testdb
+    url: "jdbc:h2:mem:testdb"
     driverClassName: org.h2.Driver
     username: sa
     password:
@@ -59,30 +17,19 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
-
----
-# Hibernate ddl auto (create, create-drop, validate, update)
-# Show all queries
-#spring.jpa.show-sql=true
-#spring.jpa.properties.hibernate.format_sql=true
-#logging.level.org.hibernate.type=trace
-spring:
-  config:
-    activate:
-      on-profile: "hibernate"
-  jpa:
     show-sql: true
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: create
       generate-ddl: true
-# create and drop tables and sequences, loads import.sql
-#spring.jpa.hibernate.ddl-auto=create-drop
-#Turn Statistics on
-#spring.jpa.properties.hibernate.generate_statistics=true
+  sql:
+    init:
+      mode: always
 
-# Hibernate ddl auto (create, create-drop, validate, update)
-# spring.jpa.hibernate.ddl-auto = update
-# create and drop tables and sequences, loads import.sql
-# spring.jpa.hibernate.ddl-auto=create-drop
-
-
+logging:
+  level:
+    org:
+      springframework: INFO
+    com:
+      learningJPA:
+        dSpringDataRepository: TRACE
