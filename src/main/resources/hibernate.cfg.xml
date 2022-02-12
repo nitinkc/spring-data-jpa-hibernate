@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The XML prolog is optional. If it exists, it must come first in the document. -->
+
+<!-- UTF-8 is  the default encoding for XML, HTML5, CSS, JavaScript, PHP, and SQL.  -->
+<!-- The Unicode Standard covers (almost) all the characters, punctuations, and symbols in the world.
+     Unicode enables processing, storage, and transport of text, independent of platform and language.
+-->
+
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- <DTD (Document Type Definition) info> -->
+
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">org.h2.Driver</property>
+		<property name="connection.url">jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password"/>
+
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">10</property>
+			
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.H2Dialect</property>
+		
+		<!-- Echo/Print all executed SQL to stdout/Console -->
+		<property name="show_sql">true</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">create</property>
+		
+		<!-- ******************************************************************
+		 *********COMMENT ALL OTHER MAPPINGS TO AVOID HAVING NULL TABLES*******
+		 ********************************************************************** -->
+		 
+		<!-- User Defined Mapping Class for the d1 Basic table test (THE POJO CLASS THAT GOES INTO DB) -->
+		 <mapping class="com.learningJPA.hibernate.singleTable.StudentHibernate"/>
+		
+		<!-- Test for Get Load methods -->
+		 <mapping class="com.learningJPA.hibernate.singleTable.Plant"/>
+		
+		<!-- For the Has-A Relationship in a single table-->
+		<mapping class="com.learningJPA.hibernate.singleTable.H1Address"/>
+		<mapping class="com.learningJPA.hibernate.singleTable.H1User"/>
+		
+		<!-- For the Has-A Relationship in a single table with multiple columns --> 
+		 <mapping class="com.learningJPA.hibernate.multCol.H2Emp"/>
+		<mapping class="com.learningJPA.hibernate.multCol.H2EmpAddress"/>
+		
+		
+		<!-- For the Has-A Relationship splits in a multIple table with multiple columns  -->
+		 <mapping class="com.learningJPA.hibernate.multTab.H3Emp"/>
+		<mapping class="com.learningJPA.hibernate.multTab.H3EmpAddress"/>
+		
+		<!-- Demonstration of pushing Object into a table  -->
+		 <mapping class="com.learningJPA.hibernate.multTab.Apple"/>
+		<mapping class="com.learningJPA.hibernate.multTab.Z2ObjectStateTester"/>
+		
+		<!-- One to One Mapping Demonstration -->
+		 <mapping class="com.learningJPA.hibernate.mapping.M1Resident"/>
+		<mapping class="com.learningJPA.hibernate.mapping.M1SSNCard"/>
+		
+		<!-- One to Many Demonstration -->
+		 <mapping class="com.learningJPA.hibernate.mapping.M2CellPhone"/>
+		<mapping class="com.learningJPA.hibernate.mapping.M2CellUser"/>
+		
+		<!-- Many To Many Mapping Demonstration  -->
+		 <mapping class="com.learningJPA.hibernate.mapping.M3ComputerLab"/>
+		<mapping class="com.learningJPA.hibernate.mapping.M3Student"/>
+		
+		<!-- Inheritance (Default) Table per Hierarchy -->
+		<mapping class="com.learningJPA.hibernate.inheritance.Fruits"/>
+		<mapping class="com.learningJPA.hibernate.inheritance.SummerFruits"/>
+		<mapping class="com.learningJPA.hibernate.inheritance.WinterFruits"/>
+	</session-factory>
+	
+</hibernate-configuration>

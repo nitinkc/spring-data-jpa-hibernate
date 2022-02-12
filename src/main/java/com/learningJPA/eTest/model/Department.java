@@ -3,8 +3,8 @@ package com.learningJPA.eTest.model;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
