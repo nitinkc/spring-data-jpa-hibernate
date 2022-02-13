@@ -7,8 +7,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties
-@EntityScan(basePackages = {"com.learningJPA.dSpringDataRepository",
-                    "com.learningJPA.eTest.model","com.learningJPA.hibernate.*"})  // scan JPA entities
+@EntityScan(basePackages = {"com.learningJPA.dSpringDataRepository"
+            ,"com.learningJPA.eTest.model"
+            //,"com.learningJPA.hibernate.*"
+        })  // scan JPA entities
 public class SpringDataJPAlearning {
 
     public static void main(String[] args) {

@@ -10,7 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class LoadVsGet {
 
 	/**
-	 * 1. Load method Throws Exception orgghibernate.ObjectNotFoundException
+	 * 1. Load method Throws Exception org.hibernate.ObjectNotFoundException
 	 *    if the Id is not found. Get methods returns null
 	 * 
 	 * 2. Load method returns a Proxy by default and DB won't hit until proxy is first invoked

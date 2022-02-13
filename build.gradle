@@ -26,7 +26,6 @@ dependencies {
     runtimeOnly 'com.h2database:h2:1.4.200'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.2.RELEASE'
 
-
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -37,9 +36,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:2.2.1.RELEASE'
     implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-// https://mvnrepository.com/artifact/org.hibernate.common/hibernate-commons-annotations
     implementation 'org.hibernate.common:hibernate-commons-annotations:5.0.1.Final'
-
 }
 
 dependencyManagement {
